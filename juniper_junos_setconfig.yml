@@ -1,0 +1,22 @@
+---
+- name: Get Junos facts from vMX router
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: load configure lines into device
+      junos_config:
+        lines:
+          - set interfaces ge-0/0/0 unit 0 description "Test interface for demo"
+         #  - set vlans vlan01 description "Test vlan"
+        comment: update config
+
+#    - name: rollback the configuration to id 10
+#      junos_config:
+#        rollback: 10
+
+#    - name: for idempotency, use full-form commands
+#      junos_config:
+#        lines:
+#          # - set int ge-0/0/1 unit 0 desc "Test interface"
+#          - set interfaces ge-0/0/1 unit 0 description "Test interface"
