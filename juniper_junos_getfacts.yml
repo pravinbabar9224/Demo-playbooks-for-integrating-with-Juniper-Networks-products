@@ -4,6 +4,9 @@
   connection: local
   gather_facts: no
   tasks:
+    - name: Ping 10.0.20.2 with default parameters. Fails if any packets lost.
+      juniper_junos_ping:
+        dest: "10.0.20.2"
     - name: gather junos_facts
       junos_facts:
       register: version
