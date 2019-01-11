@@ -6,9 +6,9 @@
   tasks:
     - name: configure the login banner
       junos_banner:
-      banner: login
-      text: |
-       this is my login banner
-       that contains a multiline
-       string
+       banner: login
+       text: |
+        this is my login banner
+        that contains a multiline
+        string
       state: present
