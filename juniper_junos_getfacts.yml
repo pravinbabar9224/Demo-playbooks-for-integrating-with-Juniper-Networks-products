@@ -1,6 +1,6 @@
 ---
 - name: Get Junos facts from vMX router
-  hosts: juniper
+  hosts: vMX01_vpc
   connection: local
   gather_facts: no
   tasks:
