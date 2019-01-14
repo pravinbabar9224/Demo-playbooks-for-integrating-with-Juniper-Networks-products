@@ -8,8 +8,6 @@
       junos_banner:
        banner: login
        text: |
-        this is my login banner
-        that contains a multiline
-        string
+        This is vMX_vpc server
        state: present
     
