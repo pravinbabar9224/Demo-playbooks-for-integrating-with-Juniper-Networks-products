@@ -8,6 +8,6 @@
       junos_banner:
        banner: login
        text: |
-        This is vMX_vpc server
+        This is vMX01_vpc juniper router.
        state: present
     
