@@ -1,5 +1,5 @@
 ---
-- name: Get Junos facts from vMX router
+- name: configure the login banner
   hosts: juniper
   connection: local
   gather_facts: yes
@@ -10,4 +10,14 @@
        text: |
         This is vMX01_vpc juniper router.
        state: present
-    
+    - name: Configure motd banner
+      junos_banner:
+       banner:  motd
+       text: |
+          You have been login on Juniper device vMX01_vpc. This is control plane ip is 10.0.20.2 and forwarding plane is available on 10.0.20.3
+       state: present
+    - name: activate the motd banner
+      junos_banner:
+       banner: motd
+       state: present
+       active: True       
