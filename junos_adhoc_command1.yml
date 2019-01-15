@@ -1,0 +1,14 @@
+---
+- hosts: juniper
+  connection: local
+  tasks:
+    - name: execute Junos command
+      junos_command:
+        commands:
+          - show version
+          - show interfaces
+      register: output
+
+    - name: print out command
+      debug:
+        var: output.stdout_lines
