@@ -6,10 +6,8 @@
       junos_command:
         commands:
           - show version
-          - show ip int br
-          - show int status
       register: output
 
     - name: print out command
       debug:
-        var: output.stdout_lines
+        var: register
