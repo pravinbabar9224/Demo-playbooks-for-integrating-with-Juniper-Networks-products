@@ -2,8 +2,8 @@
 - hosts: juniper
   connection: network_cli
   tasks:
-    - name: execute Arista eos command
-      eos_command:
+    - name: execute Junos command
+      junos_command:
         commands:
           - show version
           - show ip int br
