@@ -1,6 +1,6 @@
 ---
 - hosts: juniper
-  connection: local
+  connection: network_cli
   tasks:
     - name: execute Arista eos command
       eos_command:
