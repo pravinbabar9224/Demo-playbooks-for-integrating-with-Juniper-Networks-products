@@ -1,6 +1,6 @@
 ---
 - hosts: juniper
-  connection: network_cli
+  connection: local
   tasks:
     - name: execute Junos command
       junos_command:
