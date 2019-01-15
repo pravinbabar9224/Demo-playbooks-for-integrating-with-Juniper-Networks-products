@@ -5,8 +5,9 @@
     - name: execute Junos command
       junos_command:
         commands:
-          - show version
+          - show system uptime
           - show interfaces
+          - show version
       register: output
 
     - name: print out command
