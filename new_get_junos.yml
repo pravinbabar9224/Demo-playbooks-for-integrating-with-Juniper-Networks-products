@@ -19,7 +19,7 @@
   - name: GET-MODEL
     tags: get-model
     junos_get_facts: host="{{ inventory_hostname }}" user="{{ juniper_user }}" port="{{ juniper_port }}"
-     savedir="/opt/juniper/"
+     savedir="/var/lib/awx/projects/"
     register: junos
   - name: SHOW VARS
     tags: get-model
@@ -31,7 +31,7 @@
     tags: get-config-system
     junos_get_config: host="{{ inventory_hostname }}" user="{{ juniper_user }}" port="{{ juniper_port }}"
      format=text
-     dest="/opt/juniper/{{ inventory_hostname }}_get-config-system.output"
+     dest="/var/lib/awx/projects/{{ inventory_hostname }}_get-config-system.output"
      filter=system
  
 ### JUNOS_CLI SECTION
