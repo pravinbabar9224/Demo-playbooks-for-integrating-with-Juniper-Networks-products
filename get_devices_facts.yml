@@ -9,7 +9,7 @@
   vars_prompt:
     - name: "DEVICE_PASSWORD"
       prompt: "Device password"
-     private: yes
+      private: yes
   
   vars:
      provider_info:
