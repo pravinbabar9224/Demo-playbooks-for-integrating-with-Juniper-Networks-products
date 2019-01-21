@@ -5,19 +5,6 @@
     - Juniper.junos
   connection: local
   gather_facts: no
-  
-  vars_prompt:
-    - name: "DEVICE_PASSWORD"
-      prompt: "Device password"
-      private: yes
-  
-  vars:
-     provider_info:
-      host: "{{ inventory_hostname }}"
-      password: "{{ DEVICE_PASSWORD }}"
-      mode: "ssh"
-      port: 22
-
 
   tasks:
     - name: Retrieve facts from device running Junos OS
