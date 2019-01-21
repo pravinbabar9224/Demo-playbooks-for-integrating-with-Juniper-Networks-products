@@ -1,0 +1,45 @@
+---
+- name: GET
+  hosts: juniper
+  roles:
+  - Juniper.junos
+  connection: local
+  gather_facts: no
+ 
+  # Execute tasks (plays) this way "ansible-playbook <path>/GET.yml --tags <tag-name>"
+  tasks:
+  # Check if a device is NETCONF-aware
+  - name: CHECK-NETCONF
+    tags: check-netconf
+    wait_for: host="{{ inventory_hostname }}" port="{{ juniper_port }}"
+ 
+### WEB ### junos-ansible-modules.readthedocs.org/en/1.3.1/
+### JUNOS_GET_FACTS SECTION
+  # Get information about a device (model, active software version, serial number) and show as ansible output
+  - name: GET-MODEL
+    tags: get-model
+    junos_get_facts: host="{{ inventory_hostname }}" user="{{ juniper_user }}" port="{{ juniper_port }}"
+     savedir="/opt/juniper/"
+    register: junos
+  - name: SHOW VARS
+    tags: get-model
+    debug: msg="MODEL {{ junos.facts.model }} | SOFTWARE {{ junos.facts.version }} | S/N {{ junos.facts.serialnumber }}"
+ 
+### JUNOS_GET_CONFIG SECTION
+  # Execute "show configuration system" and save output to a file
+  - name: GET-CONFIG-SYSTEM
+    tags: get-config-system
+    junos_get_config: host="{{ inventory_hostname }}" user="{{ juniper_user }}" port="{{ juniper_port }}"
+     format=text
+     dest="/opt/juniper/{{ inventory_hostname }}_get-config-system.output"
+     filter=system
+ 
+### JUNOS_CLI SECTION
+  # Get list of interfaces and save output to a file
+  - name: GET-INTERFACES
+    tags: get-interfaces
+    junos_cli: host="{{ inventory_hostname }}" user="{{ juniper_user }}" port="{{ juniper_port }}"
+     dest="/var/lib/awx/projects/{{ inventory_hostname }}_get-interfaces.output"
+     cli="show interfaces terse"
+ 
+### EOF ###
