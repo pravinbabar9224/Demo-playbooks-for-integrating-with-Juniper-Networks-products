@@ -2,7 +2,7 @@
 - name: Get Junos facts from vMX router
   hosts: juniper
   connection: local
-  gather_facts: no
+  gather_facts: yes
   tasks:
     - name: load configure lines into device
       junos_config:
