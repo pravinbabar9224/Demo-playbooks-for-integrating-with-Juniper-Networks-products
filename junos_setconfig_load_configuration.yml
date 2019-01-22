@@ -1,0 +1,12 @@
+---
+- name: Get Junos facts from vMX router
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: load configure lines into device
+      junos_config:
+        lines:
+          - set interfaces fxp0 unit 0 description " Testing the Interface for demo purpose"
+         #  - set vlans vlan01 description "Test vlan" //example for vlan for future use.
+        comment: update config
