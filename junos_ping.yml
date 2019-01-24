@@ -4,7 +4,7 @@
   connection: local
   gather_facts: no
   tasks:
-    - name: Ping Hosts from junos_ping module.
+    - name: Ping Hosts from junos_ping module
       junos_ping:
       register: version
 
