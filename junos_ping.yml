@@ -6,8 +6,16 @@
   tasks:
     - name: Ping Hosts from junos_ping module
       junos_ping:
-      register: version
-
-    - debug:
-        var: version.stdout_lines
+       host={{ inventory_hostname }}
+      register: arp_cache
+      
+    - name: Ping Hosts from Previous Run
+      junos_ping:
+        host={{ inventory_hostname }}
+        checktype=post
+        targets="{{arp_cache.results}}"
+      register: post
+      
+    - debug: var=post
+    
   
