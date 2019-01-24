@@ -1,0 +1,13 @@
+---
+- name: Ping playbook for Junos Devices 
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Ping Hosts from junos_ping module.
+      junos_ping:
+      register: version
+
+    - debug:
+        var: version.stdout_lines
+  
