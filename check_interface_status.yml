@@ -18,5 +18,6 @@
       commands:
         - show interfaces fxp0 extensive
      # provider: "{{ credential }}"
-    register: int
-   - debug: var=int.stdout   
+    register: result
+    
+  - debug: var=result.stdout
