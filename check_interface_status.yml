@@ -18,6 +18,6 @@
       commands:
         - show interfaces {{ item.name }} extensive
      # provider: "{{ credential }}"
+    with_items: "{{ result.stdout[0]['Logical interface']['Physical interface'] }}"
     register: int
-  - debug: var=int.stdout
-    
+    when: (item['oper-status'] == 'up') and (item['name'] == 'fxp0')
