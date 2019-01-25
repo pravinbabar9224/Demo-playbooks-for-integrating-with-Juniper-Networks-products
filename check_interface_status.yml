@@ -1,6 +1,6 @@
 ---
 - name: Gather extensive details for fxp0 interfaces that are UP
-  hosts: all
+  hosts: juniper
   connection: local
   gather_facts: no
   tasks:
