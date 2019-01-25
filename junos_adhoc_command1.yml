@@ -18,4 +18,4 @@
     - name: save the output of the commands in the command dir
       copy:
        content: "{{ output.stdout_lines }}"
-       dest: "{{playbook_dir}}/command/{{inventory_hostname}}.text"
+       dest: "{/var/lib/awx/projects/_6__demo_lab_ansible_network_juniper_playbook/{inventory_hostname}}.text"
