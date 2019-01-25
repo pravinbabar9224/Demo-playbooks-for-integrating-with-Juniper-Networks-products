@@ -16,8 +16,7 @@
   - name: Collect extensive information for interfaces fxp0 if Up
     junos_command:
       commands:
-        - show interfaces {{ item.name }} extensive
+        - show interfaces fxp0 extensive
      # provider: "{{ credential }}"
-    with_items: "{{ result.stdout[0]['Logical interface']['Physical interface'] }}"
     register: int
-    when: (item['oper-status'] == 'up') and (item['name'] == 'fxp0')
+   - debug: var=int.stdout   
