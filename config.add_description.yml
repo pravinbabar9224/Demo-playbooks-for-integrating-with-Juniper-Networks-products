@@ -1,0 +1,15 @@
+---
+- name: Get Junos facts from vMX router
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Change description on interfaces based on a list of variable
+    #Comment to the interfaces configuration#
+      junos_config:
+        lines:
+          - "set interfaces {{ item.name }} description \"{{ item.description }}\""
+         #  - set vlans vlan01 description "Test vlan" //example for vlan for future use.#
+        comment: " Update description of interface {{ item.name }}"
+        #provider: "{{ credential }}"  
+      with_items: "{{ interfaces }}"
