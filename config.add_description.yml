@@ -12,4 +12,4 @@
          #  - set vlans vlan01 description "Test vlan" //example for vlan for future use.#
         comment: " Update description of interface {{ item.name }}"
         #provider: "{{ credential }}"  
-      with_items: "{{ interfaces }}"
+      with_items: "{{ ansible_interfaces  }}"
