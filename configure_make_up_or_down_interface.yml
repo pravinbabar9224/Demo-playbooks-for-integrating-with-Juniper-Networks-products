@@ -13,5 +13,5 @@
   - name: make interface up
     junos_interface:
      name: pimd
-     enabled: True 
+     enabled: False 
  
