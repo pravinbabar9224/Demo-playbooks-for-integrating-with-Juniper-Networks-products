@@ -1,0 +1,14 @@
+---
+- name: Configure interface on Juniper Router
+    #This Playbook will be use to configure interface on Juniper Router
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Configure interface on Juniper Router
+    junos_interface:
+      name: fxp0.1
+      description: test-interface fxp0.1 has been configure from Ansible
+    register: result
+      
+  - debug: var=result.stdout
