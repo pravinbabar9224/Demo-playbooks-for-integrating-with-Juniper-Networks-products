@@ -7,11 +7,11 @@
   tasks:
   - name: Configure interface on Juniper Router
     junos_interface:
-      name: em1.1
-      description: test-interface em1.1 has been configured from Ansible
+      name: pimd
+      description: test-interface pimd has been configured from Ansible
    
   - name: make interface up
     junos_interface:
-     name: em1.1
+     name: pimd
      enabled: True 
  
