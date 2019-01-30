@@ -9,6 +9,6 @@
     junos_interface:
       name: ge-0/0/1
       description: test-interface ge-0/0/1 has been configured from Ansible
-    register: result
+    register: diff.prepared
       
-  - debug: var=result.stdout
+  - debug: var=diff.prepared.stdout
