@@ -1,6 +1,6 @@
 ---
 - name: Configure interface on Juniper Router
-    #This Playbook will be use to configure interface on Juniper Router
+    #This Playbook will be use to configure and management interfaces on Juniper Router
   hosts: juniper
   connection: local
   gather_facts: no
@@ -11,7 +11,7 @@
      # description: test-interface pimd has been configured from Ansible
    
   - name: make interface down
-    junos_interface:
+    net_interface:
      name: esi
      enabled: False 
- 
+     state: down
