@@ -5,13 +5,14 @@
   connection: local
   gather_facts: no
   tasks:
-  #- name: Configure interface on Juniper Router
-    #junos_interface:
-    #  name: pimd
-     # description: test-interface pimd has been configured from Ansible
-   
-  - name: make interface down
+  - name: Configure interface on Juniper Router
     junos_interface:
-     name: esi
-     enabled: False 
-     state: down
+      name: ge-0/0/1
+      description: test-interface ge-0/0/1 has been configured from Ansible
+   
+  - name: make interface up
+    junos_interface:
+     name: ge-0/0/1
+     description: test-interface ge-0/0/1 to up from Ansible
+     enabled: True 
+     state: up
