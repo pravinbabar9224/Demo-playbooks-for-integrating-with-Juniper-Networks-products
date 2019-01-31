@@ -14,5 +14,4 @@
     junos_interface:
      name: ge-0/0/1
      description: test-interface ge-0/0/1 to up from Ansible
-     enabled: True 
-     state: up
+     enabled: True
