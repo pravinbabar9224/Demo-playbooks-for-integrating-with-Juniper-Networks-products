@@ -18,6 +18,6 @@
     register: response
   
   - name: Print the config changes.
-      debug:
-        var: response.diff_lines
+    debug:
+      var: response.diff_lines
   
