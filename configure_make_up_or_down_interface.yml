@@ -11,7 +11,7 @@
      # description: test-interface pimd has been configured from Ansible
    
   - name: make interface down
-    net_interface:
+    junos_interface:
      name: esi
      enabled: False 
      state: down
