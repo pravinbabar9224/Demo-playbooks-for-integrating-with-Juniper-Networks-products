@@ -38,7 +38,7 @@
      active: False
 
   - name: Activate interface config
-    net_interface:
+    junos_interface:
      name: ge-0/0/1
      state: present
      active: True
