@@ -2,20 +2,25 @@
 - name: checking device reachability
   hosts: juniper
   connection: local
-  gather_facts: no
+  gather_facts: yes
   tasks:
-    - name: Test reachability to 10.10.10.10
-      junos_ping:
-        dest: 10.10.10.10
+# Simple example
+   - name: "Execute ping peer"
+     junos_ping:
+      host={{ junos_host }}
+      port={{ netconf_port }}
+      user={{ ansible_ssh_user }}
+      passwd={{ ansible_ssh_pass }}
+      dest_ip=8.8.8.8
 
-    - name: Test reachability to 10.20.20.20 using source and size set
-      junos_ping:
-       dest: 10.20.20.20
-       size: 1024
-       ttl: 128
+   # - name: Test reachability to 10.20.20.20 using source and size set
+   #   junos_ping:
+   #    dest: 10.20.20.20
+    #   size: 1024
+   #    ttl: 128
 
-    - name: Test unreachability to 10.30.30.30 using interval
-      junos_ping:
-       dest: 10.30.30.30
-       interval: 3
-       state: absent
+   # - name: Test unreachability to 10.30.30.30 using interval
+   #   junos_ping:
+  #     dest: 10.30.30.30
+   #    interval: 3
+   #    state: absent
