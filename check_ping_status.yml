@@ -1,0 +1,14 @@
+---
+- name: checking router reachability
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: check if junos devices can ping directly
+      junos_ping:
+        dest: 10.0.20.2       
+      register: version
+
+    - debug:
+        msg: "{{version}}"
+    
