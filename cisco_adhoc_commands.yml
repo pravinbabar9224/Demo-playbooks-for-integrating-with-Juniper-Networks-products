@@ -1,0 +1,20 @@
+---
+- hosts: cisco
+  connection: local
+  tasks:
+    - name: execute Ios commands on cisco router
+      ios_command:
+        commands:
+          - show interfaces
+          - show run all
+          - show version
+      register: output
+
+    - name: print out command
+      debug:
+        var: output.stdout_lines
+        
+    - name: save the output of the commands in the command dir
+      copy:
+       content: "{{ output.stdout_lines }}"
+       dest: "{{inventory_hostname}}.text"
