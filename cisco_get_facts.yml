@@ -1,0 +1,16 @@
+---
+- name: Get IOS facts from Cisco router
+  hosts: cisco
+  connection: local
+  gather_facts: yes
+  tasks:
+    - name: gather ios_facts
+      ios_facts:
+      register: version
+
+    - debug:
+        msg: "{{version}}"
+
+    - name: collect default set of facts and configuration
+      ios_facts:
+        gather_subset: config
