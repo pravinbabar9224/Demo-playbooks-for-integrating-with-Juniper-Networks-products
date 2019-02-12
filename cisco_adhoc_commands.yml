@@ -6,7 +6,6 @@
       ios_command:
         commands:
           - show interfaces
-          - show run all
           - show version
       register: output
 
