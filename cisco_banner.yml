@@ -3,7 +3,6 @@
   ##Playbook to configure the banner##
   hosts: cisco
   connection: local
-  become: yes
   become_method: enable
     
   tasks:
