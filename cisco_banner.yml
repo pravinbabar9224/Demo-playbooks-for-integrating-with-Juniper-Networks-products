@@ -17,8 +17,8 @@
       ios_banner:
        banner:  motd
        text: |
-          \n You have been login on cisco device Cisco_3725.\n 
-                    \n This is control plane ip is 10.0.20.4 \n \n
+           You have been login on cisco device Cisco_3725.
+                    This is control plane ip is 10.0.20.4 
           
        state: present  
  
