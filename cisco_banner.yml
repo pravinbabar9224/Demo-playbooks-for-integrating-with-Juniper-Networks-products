@@ -4,8 +4,10 @@
   hosts: cisco
   connection: local
   become_method: enable
-  gather_facts: yes
   tasks:
+    - name: GET DEVICE FACTS
+      ios_facts:
+      
     - name: configure the login banner 
     #for configure the login banner#
       ios_banner:
