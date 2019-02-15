@@ -1,0 +1,43 @@
+---
+- name: configure the cisco banner 
+  ##Playbook to configure the banner##
+  hosts: cisco
+  connection: local
+  gather_facts: yes
+  tasks:
+    - name: configure the login banner 
+    #for configure the login banner#
+      ios_banner:
+       banner: login
+       text: |
+        This is Cisco_3725 cisco router.
+       state: present
+    - name: Configure motd banner  
+    #for configure the motd banner#
+      ios_banner:
+       banner:  motd
+       text: |
+          \n You have been login on cisco device Cisco_3725.\n 
+                    \n This is control plane ip is 10.0.20.4 \n \n
+          
+       state: present  
+ 
+   # - name: remove the motd banner 
+    #for remove the motd banner#
+   #   ios_banner:
+  #     banner: motd
+   #    state: absent
+
+  # - name: deactivate the motd banner 
+   #for deactivate the motd banner#
+  #   ios_banner:
+   #   banner: motd
+   #   state: present
+   #   active: False
+
+   - name: activate the motd banner  
+   #for activate the motd banner#
+     ios_banner:
+      banner: motd
+      state: present
+      active: True       
