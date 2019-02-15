@@ -3,6 +3,7 @@
   ##Playbook to configure the banner##
   hosts: cisco
   connection: local
+  become_method: enable
   gather_facts: yes
   tasks:
     - name: configure the login banner 
