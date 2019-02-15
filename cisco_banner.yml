@@ -11,7 +11,7 @@
       ios_banner:
        banner: login
        text: |
-        This is Cisco_3725 cisco router
+          This is Cisco_3725 cisco router
        state: present
     - name: Configure motd banner  
     #for configure the motd banner#
