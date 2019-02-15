@@ -5,7 +5,7 @@
   connection: local
   become: yes
   become_method: enable
-  ansible_become_pass: 
+  
   tasks:
     - name: GET DEVICE FACTS
       ios_facts:
