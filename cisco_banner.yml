@@ -35,9 +35,9 @@
    #   state: present
    #   active: False
 
-   - name: activate the motd banner  
+    - name: activate the motd banner  
    #for activate the motd banner#
-     ios_banner:
-      banner: motd
-      state: present
-      active: True       
+      ios_banner:
+       banner: motd
+       state: present
+       active: True       
