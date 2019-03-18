@@ -1,0 +1,43 @@
+---
+- host: R1
+  gather_facts: no
+  connection: local
+  tasks:
+   - name: IOS | Configure OSPF R1
+	 ios_config:
+	   parents: router ospf 1
+	   line:
+		 - "network {{ ospf_address_R1_ip1 }} 0.0.0.255 area 2"
+		 - "network {{ ospf_address_R1_ip2 }} 0.0.0.255 area 2"
+
+- host: R2
+  gather_facts: no
+  connection: local
+  tasks:
+   - name: IOS | Configure OSPF R2
+	 ios_config:
+	   parents: router ospf 1
+	   line:
+	     - "network {{ ospf_address_R2_ip1 }} 0.0.0.255 area 0"
+		 - "network {{ ospf_address_R2_ip2 }} 0.0.0.255 area 0"
+
+- host: R3
+  gather_facts: no
+  connection: local
+  tasks:
+   - name: IOS | Configure OSPF R3
+	 ios_config:
+	   parents: router ospf 1
+	   line:
+	     - "network {{ ospf_address_R3_ip1 }} 0.0.0.255 area 0"
+		 - "network {{ ospf_address_R3_ip2 }} 0.0.0.255 area 0"
+		  
+- host: R4
+  gather_facts: no
+  connection: local
+  tasks:
+   - name: IOS | Configure OSPF R4
+	 ios_config:
+	   parents: router ospf 1
+	   line:
+		 - "network {{ ospf_address_R4_ip1 }} 0.0.0.255 area 1"

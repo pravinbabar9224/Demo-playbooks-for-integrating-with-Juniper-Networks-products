@@ -8,13 +8,23 @@
       junos_banner:
        banner: login
        text: |
-        This is vMX01_vpc juniper router.
+               -----------------------------------------------------------------------
+
+                      This is a private network. No unauthorised access
+
+                      If you are not authorised to use this equipment you must
+
+                                   DISCONNECT IMMEDIATELY
+
+               -----------------------------------------------------------------------
+
        state: present
     - name: Configure motd banner
       junos_banner:
        banner:  motd
        text: |
-          You have been login on Juniper device vMX01_vpc. This is control plane ip is 10.0.20.2 and forwarding plane is available on 10.0.20.3
-          
-          
+               -----------------------------------------------------------------------
+                         #Unauthorized access to this device is prohibited!#
+               -----------------------------------------------------------------------\n
+       
        state: present        

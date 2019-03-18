@@ -1,0 +1,28 @@
+---
+- name: Get facts from all router
+  hosts: all
+  connection: local
+  gather_facts: yes
+  tasks:
+     ####
+    # Collect data
+    ####
+    - name: Gather facts (junos)
+      junos_facts:
+#      register: version1
+      when: ansible_network_os == 'junos'
+ #   - debug:
+  #      msg: "{{version1}}"
+
+    - name: Gather facts (ios)
+      ios_facts:
+   #   register: version2
+      when: ansible_network_os == 'ios' 
+   # - debug:
+    #    msg: "{{version2}}"
+    ###
+    # Demonstrate variables
+    #
+    - name: Display some facts
+      debug:
+        msg: "The hostname is {{ ansible_net_hostname }} and the OS is {{ ansible_net_version }}"

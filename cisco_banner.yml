@@ -14,15 +14,24 @@
       ios_banner:
        banner: login
        text: |
-          This is Cisco_3725 cisco router
+               -----------------------------------------------------------------------
+
+                      This is a private network. No unauthorised access
+
+                      If you are not authorised to use this equipment you must
+
+                                   DISCONNECT IMMEDIATELY
+
+               ----------------------------------------------------------------------- 
        state: present
     - name: Configure motd banner  
     #for configure the motd banner#
       ios_banner:
        banner:  motd
        text: |
-           You have been login on cisco device Cisco_3725
-                    This is control plane ip is 10.0.20.4 
+               -----------------------------------------------------------------------
+                         #Unauthorized access to this device is prohibited!#
+               -----------------------------------------------------------------------
           
        state: present  
  

@@ -1,0 +1,16 @@
+---
+- name: backup router configurations
+  hosts: cisco
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: gather junos_facts
+      ios_facts:
+      register: version
+
+    - debug:
+        msg: "{{version}}"
+
+    - name: Backup configuration
+      ios_config:
+        backup: yes

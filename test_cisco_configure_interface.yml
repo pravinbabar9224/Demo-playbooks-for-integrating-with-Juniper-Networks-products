@@ -1,0 +1,13 @@
+---
+- name: Get facts from all router
+  hosts: cisco
+  connection: local
+  gather_facts: yes
+  tasks:
+  - name: configure interface
+    ios_interface:
+      name: FastEthernet1/0
+      description: test-interface
+      speed: 100
+      duplex: half
+      mtu: 512

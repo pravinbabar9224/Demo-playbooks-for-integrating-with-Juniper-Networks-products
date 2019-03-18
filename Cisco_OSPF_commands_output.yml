@@ -1,0 +1,21 @@
+---
+- hosts: cisco
+  connection: local
+  tasks:
+    - name: OSPF configuration and remediation details for cisco router R1,R2,R3 and R4.
+      ios_command:
+        commands:
+          - sh ip ospf neighbor
+          - sh ip ospf database
+          - sh ip route ospf
+          - sh ip ospf int brief 
+      register: output
+
+    - name: print out command
+      debug:
+        var: output.stdout_lines
+
+    - name: save the output of the commands in the command dir
+      copy:
+       content: "{{ output.stdout_lines }}"
+       dest: "/var/lib/awx/projects/_6__demo_lab_ansible_network_juniper_playbook/backup/OSPF_Output_{{inventory_hostname}}.csv"

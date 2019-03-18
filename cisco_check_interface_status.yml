@@ -1,0 +1,20 @@
+---
+- name: Gather extensive details for FastEthernet interfaces that are UP
+  hosts: cisco
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Gather all FastEthernet interfaces status
+    ios_command:
+      commands:
+        - Show interface FastEthernet 0/0
+        - Show interface FastEthernet 0/1
+      #provider: "{{ credential }}"
+    register: result
+
+  - debug: var=result.stdout
+  - name: save the output of the commands in the command dir
+    copy:
+      content: "{{ result.stdout_lines }}"
+      dest: "/var/lib/awx/projects/_6__demo_lab_ansible_network_juniper_playbook/backup/{{inventory_hostname}}_interface_status.text"
+  
