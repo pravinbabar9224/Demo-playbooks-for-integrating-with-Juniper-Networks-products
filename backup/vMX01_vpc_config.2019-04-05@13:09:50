@@ -1,6 +1,6 @@
 set version 18.4R1.8
-set system login announcement "You have been login on Juniper device vMX01_vpc. This is control plane ip is 10.0.20.2 and forwarding plane is available on 10.0.20.3"
-set system login message "This is vMX01_vpc juniper router."
+set system login announcement "-----------------------------------------------------------------------\n          #Unauthorized access to this device is prohibited!#\n-----------------------------------------------------------------------\n"
+set system login message "-----------------------------------------------------------------------\n\n       This is a private network. No unauthorised access\n\n       If you are not authorised to use this equipment you must\n\n                    DISCONNECT IMMEDIATELY\n\n-----------------------------------------------------------------------"
 set system root-authentication encrypted-password "$6$VUNRoWz1$pMBrosT8NRWEcS81DwvEe8v5Xl49umAJg4t43Nrlhklj0hPZEbCrlQ5Hjt0S2cK76bJDhsB9eB4YUSlOwcnOg0"
 set system services ftp
 set system services ssh root-login allow
@@ -15,13 +15,15 @@ set system processes dhcp-service traceoptions file dhcp_logfile
 set system processes dhcp-service traceoptions file size 10m
 set system processes dhcp-service traceoptions level all
 set system processes dhcp-service traceoptions flag packet
-set interfaces ge-0/0/1 description test-interface-1
+set interfaces ge-0/0/1 description "test-interface-1 using aggregate"
 set interfaces ge-0/0/1 speed 1g
 set interfaces ge-0/0/1 mtu 512
 set interfaces ge-0/0/1 link-mode full-duplex
-set interfaces ge-0/0/2 description test-interface-2
+set interfaces ge-0/0/2 description "test-interface-2 using aggregate"
 set interfaces ge-0/0/2 speed 1g
 set interfaces ge-0/0/2 mtu 512
 set interfaces ge-0/0/2 link-mode full-duplex
 set interfaces fxp0 unit 0 description " Testing the Interface for RH Automation Project demo purpose"
 set interfaces fxp0 unit 0 family inet address 10.0.20.2/24
+set interfaces lo0 description "loopback0 has been configured from Ansible"
+set interfaces lo0 unit 0 family inet address 5.5.5.5/32

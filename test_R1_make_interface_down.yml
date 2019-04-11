@@ -1,0 +1,12 @@
+---
+- name: Configure interface on cisco Router R1
+    #This Playbook will be use to configure and management interfaces on cisco Router
+  hosts: R1
+  connection: local
+  gather_facts: no
+  tasks:
+
+    - name: make interface down for R1 for FastEthernet1/0
+      ios_interface:
+       name: FastEthernet1/0
+       enabled: False

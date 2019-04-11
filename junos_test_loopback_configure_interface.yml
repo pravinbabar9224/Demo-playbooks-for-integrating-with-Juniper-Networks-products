@@ -1,0 +1,23 @@
+---
+- name: Configure interface on Juniper Router
+    #This Playbook will be use to configure and management interfaces on Juniper Router
+  hosts: juniper
+  connection: local
+  gather_facts: no
+  tasks:
+  - name: Configure interface on Juniper Router
+    junos_interface:
+      name: lo0
+      description: loopback0 has been configured from Ansible
+
+
+# - name: assining ip address to loopback0 interface
+#    junos_command:
+#      commands:
+#         - set interfaces loopback0 unit 0 family inet address 5.5.5.5/32
+
+  - name: configure IP address to loopback0 interface
+    junos_config:
+      lines:
+         - set interfaces lo0 unit 0 family inet address 5.5.5.5/32
+      comment: configured by Ansible module junos_config

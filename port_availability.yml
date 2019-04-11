@@ -1,0 +1,16 @@
+---
+- name: Check all port numbers are accessible from current device
+    #This Playbook will be use to Check all port numbers are accessible from current device
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Check all port numbers are accessible from current device
+      wait_for:
+        port: "{{ item }}"
+        state: started         # Port should be open
+        delay: 0               # 0 sec wait before first check (sec)
+        timeout: 3             # Stop checking after timeout (sec)
+      ignore_errors: yes
+      with_items:
+        - 22

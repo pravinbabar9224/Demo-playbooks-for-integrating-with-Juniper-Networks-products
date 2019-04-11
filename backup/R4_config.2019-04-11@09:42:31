@@ -1,16 +1,17 @@
+Building configuration...
 
+Current configuration : 2495 bytes
 !
 version 12.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname R2
+hostname R4
 !
 boot-start-marker
 boot-end-marker
 !
-enable secret 5 $1$7CJ0$f4WtYl23pWK/XkSDe8OoV.
 !
 no aaa new-model
 memory-size iomem 5
@@ -21,7 +22,7 @@ ip cef
 !
 !
 no ip domain lookup
-ip domain name R2.test
+ip domain name R4.test
 !
 multilink bundle-name authenticated
 !
@@ -59,28 +60,50 @@ ip ssh version 2
 !
 !
 !
+interface Loopback0
+ description loopback0 configure from RedHat Ansible.
+ ip address 4.4.4.4 255.255.255.255
+!
+interface Loopback1
+ description loopback1 configure from RedHat Ansible.
+ no ip address
+!
 interface FastEthernet0/0
  description test-interface FastEthernet has been configured from Ansible
- ip address 23.0.0.2 255.255.255.0
+ no ip address
  duplex auto
  speed auto
 !
 interface FastEthernet0/1
  description test-interface configure from RedHat Ansible
- ip address 34.0.0.1 255.255.255.0
+ ip address 12.0.0.1 255.255.255.0
  speed 100
  half-duplex
 !
 interface FastEthernet1/0
+ description FastEthernet1/0 configure from RedHat Ansible.
+ ip address 84.0.0.1 255.255.255.0
+ speed 100
+ half-duplex
+!
+interface FastEthernet2/0
+ description test-interface-2 from Ansible
  no ip address
- shutdown
- duplex auto
- speed auto
+ speed 100
+ full-duplex
 !
 router ospf 1
  log-adjacency-changes
- network 23.0.0.0 0.0.0.255 area 0
- network 34.0.0.0 0.0.0.255 area 2
+ network 4.4.4.4 0.0.0.0 area 1
+ network 12.0.0.0 0.0.0.255 area 1
+!
+router bgp 65100
+ no synchronization
+ bgp router-id 12.0.0.1
+ bgp log-neighbor-changes
+ network 12.0.0.0 mask 255.255.255.255
+ neighbor 12.0.0.2 remote-as 65000
+ no auto-summary
 !
 ip forward-protocol nd
 !

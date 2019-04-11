@@ -1,11 +1,13 @@
+Building configuration...
 
+Current configuration : 2494 bytes
 !
 version 12.4
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname R1
+hostname R3
 !
 boot-start-marker
 boot-end-marker
@@ -20,7 +22,7 @@ ip cef
 !
 !
 no ip domain lookup
-ip domain name testlab.local
+ip domain name R3.test
 !
 multilink bundle-name authenticated
 !
@@ -58,29 +60,48 @@ ip ssh version 2
 !
 !
 !
+interface Loopback0
+ description loopback0 configure from RedHat Ansible.
+ ip address 3.3.3.3 255.255.255.255
+!
 interface FastEthernet0/0
- description test-interface-1 from Ansible
- ip address 10.0.20.4 255.255.255.0
- speed 100
- full-duplex
-!
-interface FastEthernet0/1
- description test-interface-2 from Ansible
- ip address 34.0.0.2 255.255.255.0
- speed 100
- full-duplex
-!
-interface FastEthernet1/0
- no ip address
- shutdown
+ description test-interface FastEthernet has been configured from Ansible
+ ip address 23.0.0.1 255.255.255.0
  duplex auto
  speed auto
 !
+interface FastEthernet0/1
+ description test-interface configure from RedHat Ansible
+ ip address 12.0.0.2 255.255.255.0
+ speed 100
+ half-duplex
+!
+interface FastEthernet1/0
+ description FastEthernet1/0 configure from RedHat Ansible.
+ ip address 74.0.0.1 255.255.255.0
+ speed 100
+ half-duplex
+!
+interface FastEthernet2/0
+ description test-interface-2 from Ansible
+ no ip address
+ speed 100
+ full-duplex
+!
 router ospf 1
  log-adjacency-changes
- network 10.0.0.0 0.0.0.255 area 2
- network 10.0.20.0 0.0.0.255 area 2
- network 34.0.0.0 0.0.0.255 area 2
+ network 3.3.3.3 0.0.0.0 area 0
+ network 12.0.0.0 0.0.0.255 area 1
+ network 23.0.0.0 0.0.0.255 area 0
+!
+router bgp 65000
+ no synchronization
+ bgp router-id 23.0.0.1
+ bgp log-neighbor-changes
+ network 23.0.0.0 mask 255.255.255.255
+ neighbor 12.0.0.1 remote-as 65100
+ neighbor 23.0.0.2 remote-as 65000
+ no auto-summary
 !
 ip forward-protocol nd
 !
@@ -131,6 +152,9 @@ line aux 0
  privilege level 15
  logging synchronous
 line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
  login local
  transport input ssh
 !

@@ -5,8 +5,8 @@
     - name: execute Ios commands on cisco router
       ios_command:
         commands:
-          - show interfaces
           - show version
+          - show interfaces
       register: output
 
     - name: print out command

@@ -1,0 +1,10 @@
+---
+- name: load configuration file into device
+  hosts: juniper
+  connection: local
+  gather_facts: yes
+  tasks:
+    - name: load configuration file into device
+      junos_config:
+        src: /var/lib/awx/projects/_6__demo_lab_ansible_network_juniper_playbook/backup/vMX01_vpc_config.2019-04-05@13:09:50
+        comment: update config

@@ -1,0 +1,11 @@
+---
+
+  - hosts: cisco
+    gather_facts: no
+
+    tasks:
+
+      - name: Backup IOS device configration.
+        ios_config:
+          backup: yes
+        register: "{{ inventory_hostname }}"

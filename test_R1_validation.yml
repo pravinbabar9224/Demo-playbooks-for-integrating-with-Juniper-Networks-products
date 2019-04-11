@@ -1,0 +1,8 @@
+---
+- name: Testing Validation of FastEthernet1/0 interface
+  hosts: R1
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Testing Validation of FastEthernet1/0 interface
+      ios_facts:

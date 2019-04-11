@@ -1,0 +1,10 @@
+---
+- name: Ensure hostname set for all devices
+    #This Playbook will be use to Ensure hostname set for all devices.
+  hosts: cisco
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Ensure hostname set for all devices
+      hostname : 
+        name : {inventory_hostname}
