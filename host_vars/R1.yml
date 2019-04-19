@@ -1,9 +1,0 @@
-bgp:
-  asn: 65200 
-  routerid: 10.0.20.4
-  neighbors:
-    - address: 34.0.0.1
-      remoteas: 65000
-  networks:
-    - address: 10.0.20.0
-      mask: 255.255.255.255

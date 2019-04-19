@@ -5,4 +5,5 @@ bgp:
     - address: 34.0.0.1
       remoteas: 65000
   networks:
-    - address: 10.0.20.4/32
+    - address: 10.0.20.0
+      mask: 255.255.255.255

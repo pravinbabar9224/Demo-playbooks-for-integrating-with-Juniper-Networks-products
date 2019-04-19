@@ -7,4 +7,5 @@ bgp:
     - address: 12.0.0.1
       remoteas: 65100
   networks:
-    - address: 23.0.0.1/32
+    - address: 23.0.0.0
+      mask: 255.255.255.255

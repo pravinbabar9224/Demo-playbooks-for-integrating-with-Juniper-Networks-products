@@ -1,0 +1,4 @@
+---
+ospf_networks:
+    - { ospf_network: 34.0.0.2, ospf_area: 2 }
+    - { ospf_network: 23.0.0.1, ospf_area: 0 }

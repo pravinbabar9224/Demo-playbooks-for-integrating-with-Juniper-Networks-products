@@ -1,0 +1,4 @@
+router ospf 1
+ {% for network in ospf_networks %}
+ network {{ network.ospf_network  }} 0.0.0.255 area {{ network.ospf_area }}
+ {% endfor %}
