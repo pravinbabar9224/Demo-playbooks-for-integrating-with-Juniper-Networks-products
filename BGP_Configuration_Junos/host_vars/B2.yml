@@ -1,0 +1,5 @@
+bgp:
+  asn: 200 
+  neighbor_ibgp:
+    - address: 10.2.2.1
+

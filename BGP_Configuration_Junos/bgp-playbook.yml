@@ -1,0 +1,19 @@
+---
+  - hosts: juniper
+    gather_facts: no
+
+    tasks:
+
+      - name: Create configuration templates
+        template:
+          src: "templates/junos_bgp.j2"
+          dest: "configs/{{ inventory_hostname }}.config"
+
+      - name: load BGP config JUNOS
+        junos_config:
+          src: "configs/{{ inventory_hostname }}.config"
+        register: updates
+
+      - name: debug updates
+        debug:
+          msg: "{{ updates.updates }}"

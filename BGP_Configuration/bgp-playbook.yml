@@ -9,7 +9,7 @@
           src: "templates/{{ ansible_network_os }}_bgp.j2"
           dest: "configs/{{ inventory_hostname }}.config"
 
-      - name: load BGP config eos
+      - name: load BGP config IOS
         ios_config:
           src: "configs/{{ inventory_hostname }}.config"
         register: updates

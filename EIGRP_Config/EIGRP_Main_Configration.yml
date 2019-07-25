@@ -1,0 +1,5 @@
+---
+
+  - import_playbook: backup-playbook.yml
+  - import_playbook: EIGRP-Playbook.yml
+  - import_playbook: writemem-playbook.yml

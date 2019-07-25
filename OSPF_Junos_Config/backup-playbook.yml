@@ -1,0 +1,10 @@
+---
+- name: backup router configurations
+  hosts: Juniper
+  connection: local
+  gather_facts: no
+  tasks:
+      - name: Backup JUNOS device
+        junos_config:
+          backup: yes
+        register: "{{ inventory_hostname }}"

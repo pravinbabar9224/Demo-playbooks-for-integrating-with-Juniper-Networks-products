@@ -1,0 +1,3 @@
+---
+eigrp_networks:
+    - { eigrp_network: 12.0.0.2 }

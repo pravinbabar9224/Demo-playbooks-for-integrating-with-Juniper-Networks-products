@@ -1,0 +1,47 @@
+---
+- name: IOS UPGRADE
+  hosts: R5
+  connection: local
+  become: true
+  remote_user: root
+  gather_facts: no
+
+  vars:
+    complaint_ios_version: 15.T14
+
+  tasks:
+    - name: GATHER ROUTER FACTS
+      ios_facts:
+
+    - name: UPGRADE IOS IMAGE IF NOT COMPLIANT
+      block:
+      #- name: COPY OVER IOS IMAGE
+       # shell: "scp c1700-adventerprisek9-mz.124-15.T14.bin {{inventory_hostname}}:flash:/c1700-adventerprisek9-mz.124-15.T14.bin"
+
+      - name: SET BOOT SYSTEM FLASH
+        ios_config:
+          commands:
+            - "boot system flash:c1700-adventerprisek9-mz.124-15.T14.bin"
+
+      - name: REBOOT ROUTER
+        ios_command:
+          commands:
+            - "reload in 1\ny"
+          #timeout: 300
+      - name: WAIT FOR ROUTER TO RETURN
+        wait_for:
+           host: "{{inventory_hostname}}"
+           port: 22
+           delay: 60
+        #   timeout: 1200
+        #delegate_to: localhost
+
+      when: ansible_net_version != complaint_ios_version
+
+    - name: GATHER ROUTER FACTS FOR VERIFICATION
+      ios_facts:
+
+    - name: ASSERT THAT THE IOS VERSION IS CORRECT
+      assert:
+        that:
+          - compliant_ios_version == ansible_net_version

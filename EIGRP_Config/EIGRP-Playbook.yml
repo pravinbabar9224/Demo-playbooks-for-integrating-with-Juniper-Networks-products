@@ -1,0 +1,19 @@
+---
+  - hosts: cisco
+    gather_facts: no
+
+    tasks:
+
+      - name: Create configuration templates
+        template:
+          src: "./templates/ios_eigrp.j2"
+          dest: "./configs/{{ inventory_hostname }}.config"
+
+      - name: load EIGRP config IOS
+        ios_config:
+          src: "./configs/{{ inventory_hostname }}.config"
+        register: updates
+
+      - name: debug updates
+        debug:
+          msg: "{{ updates.updates }}"

@@ -1,0 +1,12 @@
+set routing-options autonomous-system {{bgp.asn}}
+edit protocols bgp
+edit group ebgp-peers
+{% for neighbor in bgp.neighbors -%}
+set neighbor {{ neighbor.address }} peer-as {{ neighbor.remoteas }}
+{% endfor -%}
+set type external
+edit group ibgp-peers
+{% for neighbor_ibgp in bgp.neighbors_ibgp -%}
+set neighbor {{ neighbor_ibgp.address }}
+{% endfor -%}
+set type internal

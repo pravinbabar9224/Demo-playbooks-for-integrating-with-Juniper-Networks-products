@@ -1,0 +1,4 @@
+router eigrp 100
+ {% for network in eigrp_networks %}
+ network {{ network.eigrp_network  }} 0.0.0.255 area {{ network.eigrp_area }}
+ {% endfor %}

@@ -1,0 +1,10 @@
+---
+- name: backup router configurations
+  hosts: cisco
+  connection: local
+  gather_facts: no
+  tasks:
+      - name: Backup IOS device
+        ios_config:
+          backup: yes
+        register: "{{ inventory_hostname }}"

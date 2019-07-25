@@ -6,4 +6,4 @@
 
       - name: Save Ios configuration
         ios_config:
-          save_when: modified
+          save_when: always

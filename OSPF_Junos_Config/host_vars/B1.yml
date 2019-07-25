@@ -1,0 +1,4 @@
+---
+ospf_interface:
+    - { ospf_interface: fastethernet.A1.1 }
+    - { ospf_interface: fastethernet.B2.2 }

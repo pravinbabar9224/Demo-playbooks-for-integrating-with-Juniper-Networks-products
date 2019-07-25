@@ -1,0 +1,4 @@
+set ospf area 0.0.0.0
+ {% for interface in ospf_interface %}
+ set ospf area 0.0.0.0 interface (interface.ospf_interface)
+ {% endfor %}

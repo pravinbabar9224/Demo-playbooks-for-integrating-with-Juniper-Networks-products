@@ -1,0 +1,8 @@
+bgp:
+  asn: 100 
+  neighbors:
+    - address: 172.16.0.2
+      remoteas: 200
+  neighbor_ibgp:
+    - address: 10.1.1.2 
+

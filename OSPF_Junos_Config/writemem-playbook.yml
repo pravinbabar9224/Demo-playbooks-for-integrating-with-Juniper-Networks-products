@@ -1,0 +1,9 @@
+---
+  - hosts: cisco
+    gather_facts: no
+
+    tasks:
+
+      - name: Save Ios configuration
+        ios_config:
+          save_when: always

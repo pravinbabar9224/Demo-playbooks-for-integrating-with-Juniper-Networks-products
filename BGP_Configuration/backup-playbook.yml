@@ -4,7 +4,7 @@
   connection: local
   gather_facts: no
   tasks:
-    - name: gather junos_facts
+    - name: gather Ios_facts
       ios_facts:
       register: version
 
