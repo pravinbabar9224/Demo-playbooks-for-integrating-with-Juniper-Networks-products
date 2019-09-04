@@ -1,0 +1,13 @@
+---
+- name: Get facts from all router
+  hosts: all
+  connection: local
+  gather_facts: yes
+  tasks:
+     ####
+    # Collect data
+    ####
+    - name: Gather facts (junos)
+      junos_facts:
+#      register: version1
+
